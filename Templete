@@ -1,0 +1,68 @@
+//hv69 templete
+
+//start
+#include<bits/stdc++.h>
+
+#include <ext/pb_ds/assoc_container.hpp>
+#include <ext/pb_ds/tree_policy.hpp>
+
+using namespace __gnu_pbds;
+using namespace std;
+
+typedef tree<int, null_type, less<int>, rb_tree_tag, tree_order_statistics_node_update> ordered_set;
+typedef tree<int, null_type, less_equal<int>, rb_tree_tag, tree_order_statistics_node_update> ordered_multiset;
+
+typedef long long ll;
+typedef vector<ll> vll;
+typedef map<ll,ll> mll;
+typedef set<ll> sll;
+typedef priority_queue<ll> pq;
+typedef priority_queue<ll,vll,greater<int>> mpq;
+typedef queue<ll> qll;
+
+
+#define gcd(a,b) __gcd(a,b)
+#define lcm(a,b) (a*b/gcd(a,b));
+
+#define mod 1e9+7
+
+
+//can be used to match both string pattern and integer or any pattern Input parameters can be changed
+//TC:O(n) OP to find patterns
+
+int rabin_karp(const vector<int> &s, const vector<int> &t) {
+    const int p = 31, m = 1e9 + 9, sz = t.size();
+    long long p_pow = 1, h_t = 0, h_s = 0;
+    for (int i = 0; i < sz; ++i) {
+        h_t = (h_t * p + (t[i] + 1)) % m;
+        p_pow = (p_pow * p) % m;
+    }
+    int res = 0;
+    for (int i = 0; i < s.size(); ++i) {
+        h_s = (h_s * p + (s[i] + 1)) % m;
+        if (i >= sz)
+            h_s = (m + h_s - p_pow * (s[i - sz] + 1) % m) % m;
+        if (i + 1 >= sz && h_t == h_s)
+            ++res;
+    }
+    return res;
+}
+
+
+void hv(){
+        cout<<"\n";
+}
+
+//end
+
+int main(){
+	ios_base::sync_with_stdio(0);
+	cin.tie(NULL);
+	cout.tie(NULL);
+	ll t;
+	cin>>t;
+	while(t--){
+		
+		
+	}
+}
